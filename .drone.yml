@@ -4,15 +4,12 @@ name: Deploy this awesome build
 steps:
 - name: Build & Push Docker Image
   image: plugins/docker
-  environment:
-    REGISTRYUSERNAME:
-      from_secret: REGISTRY_USERNAME
-    REGISTRYPASSWORD:
-      from_secret: REGISTRY_PASSWORD
   settings:
     registry: git.roastedcode.com
-    username: lucianciolacdev@gmail.com
-    password: zcn.jwq8fma3FGN6wdx
+    username: 
+      from_secret: REGISTRY_USERNAME
+    password:
+      from_secret: REGISTRY_PASSWORD
     repo: git.roastedcode.com/luycki/testapp
     tags:
     - latest
