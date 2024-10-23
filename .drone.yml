@@ -8,10 +8,13 @@ platform:
 
 steps:
 - name: Docker Build
+  environment:
+    REGISTRY_USERNAME:
+      from_secret: REGISTRY_USERNAME
+    REGISTRY_PASSWORD:
+      from_secret: REGISTRY_PASSWORD
   commands:
-  - echo ${DRONE_BRANCH}
-  - echo ${test}
-  - docker login git.roastedcode.com -u lucianciolacdev@gmail.com -p zcn.jwq8fma3FGN6wdx
+  - docker login git.roastedcode.com -u ${REGISTRY_USERNAME} -p ${REGISTRY_PASSWORD}
   - docker build -t git.roastedcode.com/luycki/testapp:staging .
 
 - name: Docker Push
