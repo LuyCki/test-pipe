@@ -9,4 +9,7 @@ platform:
 steps:
 - name: Docker Build
   commands:
-  - docker build -t testapp:staging .
+  - docker login git.roastedcode.com -u lucianciolacdev@gmail.com -p zcn.jwq8fma3FGN6wdx
+  - docker build -t git.roastedcode.com/LuyCki/testapp:staging .
+  - docker tag testapp:staging git.roastedcode.com/LuyCki/testapp:staging
+  - docker push git.roastedcode.com/LuyCki/testapp:staging
