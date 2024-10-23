@@ -9,7 +9,7 @@ steps:
     username: 
       from_secret: REGISTRY_USERNAME
     password:
-      from_secret: REGISTRY_PASSWORD
+      from_secret: REGISTRY_PASSWORDd
     repo: git.roastedcode.com/luycki/testapp
     tags:
     - latest
