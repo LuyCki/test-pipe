@@ -8,7 +8,7 @@ steps:
     registry: git.roastedcode.com
     username: lucianciolacdev@gmail.com
     password: zcn.jwq8fma3FGN6wdx
-    repo: roastedcode/testapp
+    repo: luycki/testapp
     tags:
     - latest
 
