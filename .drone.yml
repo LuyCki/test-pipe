@@ -14,7 +14,7 @@ steps:
     REGISTRY_PASSWORD:
       from_secret: REGISTRY_PASSWORD
   commands:
-  - docker login git.roastedcode.com -u $REGISTRY_USERNAME -p $REGISTRY_PASSWORD
+  - docker login git.roastedcode.com -u ${REGISTRY_USERNAME} -p ${REGISTRY_PASSWORD}
   - docker build -t git.roastedcode.com/luycki/testapp:staging .
   - echo $DRONE_REPO
   - echo ${DRONE_REPO}
