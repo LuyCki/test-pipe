@@ -9,8 +9,8 @@ platform:
 steps:
 - name: Docker Build
   commands:
-  - echo ${ DRONE_BRANCH }
-  - echo ${ test }
+  - echo ${DRONE_BRANCH}
+  - echo ${test}
   - docker login git.roastedcode.com -u lucianciolacdev@gmail.com -p zcn.jwq8fma3FGN6wdx
   - docker build -t git.roastedcode.com/luycki/testapp:staging .
 
