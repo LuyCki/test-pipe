@@ -7,6 +7,6 @@ platform:
   arch: amd64
 
 steps:
-- name: greeting
+- name: Docker Build
   commands:
-  - echo hello world
+  - docker build -t testapp:staging
