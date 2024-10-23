@@ -2,7 +2,7 @@ kind: pipeline
 name: Deploy this awesome build
 
 steps:
-- name: docker
+- name: Docker Build & Push
   image: plugins/docker
   settings:
     registry: git.roastedcode.com
