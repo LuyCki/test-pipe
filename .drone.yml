@@ -1,24 +1,37 @@
 kind: pipeline
-type: exec
-name: default
-
-platform:
-  os: linux
-  arch: amd64
+name: Deploy this awesome build
 
 steps:
-- name: Docker Build
-  environment:
-    REGISTRY_USERNAME:
-      from_secret: REGISTRY_USERNAME
-    REGISTRY_PASSWORD:
-      from_secret: REGISTRY_PASSWORD
-  commands:
-  - docker login git.roastedcode.com -u ${REGISTRY_USERNAME} -p ${REGISTRY_PASSWORD}
-  - docker build -t git.roastedcode.com/luycki/testapp:staging .
-  - echo $DRONE_REPO
-  - echo ${DRONE_REPO}
-- name: Docker Push
-  commands:
-  # - docker tag testapp:staging git.roastedcode.com/luycki/testapp:staging
-  - docker push git.roastedcode.com/luycki/testapp:staging
+- name: docker
+  image: plugins/docker
+  settings:
+    registry: git.roastedcode.com
+    username: lucianciolacdev@gmail.com
+    password: zcn.jwq8fma3FGN6wdx
+    repo: roastedcode/testapp
+    tags:
+    - latest
+
+
+# kind: pipeline
+# type: exec
+# name: default
+
+# platform:
+#   os: linux
+#   arch: amd64
+
+# steps:
+# - name: Docker Build
+#   environment:
+#     REGISTRY_USERNAME:
+#       from_secret: REGISTRY_USERNAME
+#     REGISTRY_PASSWORD:
+#       from_secret: REGISTRY_PASSWORD
+#   commands:
+#   - docker login git.roastedcode.com -u $REGISTRY_USERNAME -p $REGISTRY_PASSWORD
+#   - docker build -t git.roastedcode.com/luycki/testapp:staging .
+# - name: Docker Push
+#   commands:
+#   # - docker tag testapp:staging git.roastedcode.com/luycki/testapp:staging
+#   - docker push git.roastedcode.com/luycki/testapp:staging
