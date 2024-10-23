@@ -16,8 +16,8 @@ steps:
   commands:
   - docker login git.roastedcode.com -u $REGISTRY_USERNAME -p $REGISTRY_PASSWORD
   - docker build -t git.roastedcode.com/luycki/testapp:staging .
-  - echo $DRONE_BRANCH
-
+  - echo $DRONE_REPO
+  - echo ${DRONE_REPO}
 - name: Docker Push
   commands:
   # - docker tag testapp:staging git.roastedcode.com/luycki/testapp:staging
