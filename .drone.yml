@@ -11,8 +11,8 @@ steps:
       from_secret: REGISTRY_PASSWORD
   settings:
     registry: git.roastedcode.com
-    username: ${REGISTRY_USERNAME}
-    password: ${REGISTRY_PASSWORD}
+    username: $REGISTRY_USERNAME
+    password: $REGISTRY_PASSWORD
     repo: git.roastedcode.com/luycki/testapp
     tags:
     - latest
