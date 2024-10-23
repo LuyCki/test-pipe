@@ -5,19 +5,17 @@ steps:
 - name: Build & Push Docker Image
   image: plugins/docker
   environment:
-    REGISTRY_USERNAME:
+    REGISTRYUSERNAME:
       from_secret: REGISTRY_USERNAME
-    REGISTRY_PASSWORD:
+    REGISTRYPASSWORD:
       from_secret: REGISTRY_PASSWORD
   settings:
     registry: git.roastedcode.com
-    username: ${REGISTRY_USERNAME}
-    password: ${REGISTRY_PASSWORD}
+    username: ${REGISTRYUSERNAME}
+    password: ${REGISTRYPASSWORD}
     repo: git.roastedcode.com/luycki/testapp
     tags:
     - latest
-
-
 
 # kind: pipeline
 # type: exec
