@@ -9,4 +9,4 @@ platform:
 steps:
 - name: Docker Build
   commands:
-  - docker build -t testapp:staging
+  - docker build -t testapp:staging .
