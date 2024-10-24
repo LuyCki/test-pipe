@@ -38,13 +38,12 @@ stepTemplates:
   steps:
   - !CommandStep
     name: Detect Build Version
-    runInContainer: true
+    runInContainer: false
     image: mcr.microsoft.com/powershell
-    interpreter: !DefaultInterpreter
+    interpreter: !ShellInterpreter
+      shell: bash
       commands: |
-        $xml = [Xml] (Get-Content ./testci.csproj)
-        $version = $xml.Project.PropertyGroup.Version
-        echo $version
+        grep '<Version>' < testci.csproj | sed 's/.*<Version>\(.*\)<\/Version>/\1/'
     useTTY: true
     condition: ALL_PREVIOUS_STEPS_WERE_SUCCESSFUL
   - !SetBuildVersionStep
