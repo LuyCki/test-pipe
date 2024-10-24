@@ -43,7 +43,7 @@ stepTemplates:
     interpreter: !DefaultInterpreter
       commands: |
         ls
-        echo grep '<Version>' < testci.csproj | sed 's/.*<Version>\(.*\)<\/Version>/\1/'
+        echo grep '<Version>' < .csproj | sed 's/.*<Version>\(.*\)<\/Version>/\1/'
     useTTY: true
     condition: ALL_PREVIOUS_STEPS_WERE_SUCCESSFUL
   - !SetBuildVersionStep
