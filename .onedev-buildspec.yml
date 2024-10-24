@@ -12,6 +12,10 @@ jobs:
     name: Set Build Version
     templateName: Set Build Version
     condition: ALL_PREVIOUS_STEPS_WERE_SUCCESSFUL
+  - !SetBuildVersionStep
+    name: build version
+    buildVersion: '@file:buildVersion@'
+    condition: ALL_PREVIOUS_STEPS_WERE_SUCCESSFUL
   - !BuildImageStep
     name: Build & Push
     output: !RegistryOutput
