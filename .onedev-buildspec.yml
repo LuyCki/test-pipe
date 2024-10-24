@@ -9,12 +9,12 @@ jobs:
     withSubmodules: false
     condition: ALL_PREVIOUS_STEPS_WERE_SUCCESSFUL
   - !PruneBuilderCacheStep
-    name: Clean Cache
+    name: Prune Builder Cache
     condition: ALL_PREVIOUS_STEPS_WERE_SUCCESSFUL
   - !BuildImageStep
     name: Build & Push
     output: !RegistryOutput
-      tags: '@server_host@@project_name@/testapp:latest'
+      tags: '@server_host@/@project_name@/@tag@'
     builtInRegistryAccessTokenSecret: package-token
     condition: ALL_PREVIOUS_STEPS_WERE_SUCCESSFUL
   retryCondition: never
