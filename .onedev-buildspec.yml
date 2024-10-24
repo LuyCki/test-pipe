@@ -11,7 +11,7 @@ jobs:
   - !BuildImageStep
     name: Build & Push
     output: !RegistryOutput
-      tags: test/testapp:latest
+      tags: '@server_host@/test/testapp:latest'
     builtInRegistryAccessTokenSecret: package-token
     condition: ALL_PREVIOUS_STEPS_WERE_SUCCESSFUL
   retryCondition: never
