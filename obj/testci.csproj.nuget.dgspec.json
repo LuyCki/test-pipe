@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Programming\\Projects\\testci\\testci.csproj": {}
+    "D:\\Programming\\Projects\\RC\\testci\\testci.csproj": {}
   },
   "projects": {
-    "D:\\Programming\\Projects\\testci\\testci.csproj": {
-      "version": "1.0.0",
+    "D:\\Programming\\Projects\\RC\\testci\\testci.csproj": {
+      "version": "1.2.3",
       "restore": {
-        "projectUniqueName": "D:\\Programming\\Projects\\testci\\testci.csproj",
+        "projectUniqueName": "D:\\Programming\\Projects\\RC\\testci\\testci.csproj",
         "projectName": "testci",
-        "projectPath": "D:\\Programming\\Projects\\testci\\testci.csproj",
+        "projectPath": "D:\\Programming\\Projects\\RC\\testci\\testci.csproj",
         "packagesPath": "C:\\Users\\Lucian Ciolac\\.nuget\\packages\\",
-        "outputPath": "D:\\Programming\\Projects\\testci\\obj\\",
+        "outputPath": "D:\\Programming\\Projects\\RC\\testci\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Lucian Ciolac\\AppData\\Roaming\\NuGet\\NuGet.Config",

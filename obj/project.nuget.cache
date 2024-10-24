@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "lcWX1SydITM=",
+  "dgSpecHash": "xWOz9ArlTEU=",
   "success": true,
-  "projectFilePath": "D:\\Programming\\Projects\\testci\\testci.csproj",
+  "projectFilePath": "D:\\Programming\\Projects\\RC\\testci\\testci.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Lucian Ciolac\\.nuget\\packages\\microsoft.aspnetcore.openapi\\8.0.8\\microsoft.aspnetcore.openapi.8.0.8.nupkg.sha512",
     "C:\\Users\\Lucian Ciolac\\.nuget\\packages\\microsoft.extensions.apidescription.server\\6.0.5\\microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
