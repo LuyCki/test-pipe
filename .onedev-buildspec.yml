@@ -38,9 +38,10 @@ stepTemplates:
   steps:
   - !CommandStep
     name: Detect Build Version
-    runInContainer: true
+    runInContainer: false
     image: mcr.microsoft.com/powershell
-    interpreter: !DefaultInterpreter
+    interpreter: !PowerShellInterpreter
+      powershell: powershell.exe
       commands: |
         $ErrorActionPreference = "Stop"
         $xml = [Xml] (Get-Content ./testci.csproj)
