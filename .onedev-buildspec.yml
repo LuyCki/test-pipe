@@ -8,12 +8,12 @@ jobs:
     withLfs: false
     withSubmodules: false
     condition: ALL_PREVIOUS_STEPS_WERE_SUCCESSFUL
-  - !PruneBuilderCacheStep
-    name: Prune Builder Cache
-    condition: ALL_PREVIOUS_STEPS_WERE_SUCCESSFUL
   - !UseTemplateStep
     name: Set Build Version
     templateName: Set Build Version
+    condition: ALL_PREVIOUS_STEPS_WERE_SUCCESSFUL
+  - !PruneBuilderCacheStep
+    name: Prune Builder Cache
     condition: ALL_PREVIOUS_STEPS_WERE_SUCCESSFUL
   - !BuildImageStep
     name: Build & Push
@@ -42,6 +42,7 @@ stepTemplates:
     image: debian
     interpreter: !DefaultInterpreter
       commands: |
+        ls
         echo grep '<Version>' < testci.csproj | sed 's/.*<Version>\(.*\)<\/Version>/\1/'
     useTTY: true
     condition: ALL_PREVIOUS_STEPS_WERE_SUCCESSFUL
