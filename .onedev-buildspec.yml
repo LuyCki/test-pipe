@@ -18,7 +18,7 @@ jobs:
   - !BuildImageStep
     name: Build & Push
     output: !RegistryOutput
-      tags: '@server_host@/@project_name@:@build_version@'
+      tags: '@server_host@/@project_name@:@file:buildVersion@'
     builtInRegistryAccessTokenSecret: package-token
     condition: ALL_PREVIOUS_STEPS_WERE_SUCCESSFUL
   - !CreateTagStep
@@ -43,7 +43,6 @@ stepTemplates:
     interpreter: !DefaultInterpreter
       commands: |
         build = grep -Eoi "<version>([[:digit:]\.]+)</version>" ./testci.csproj | sed -n 's:.*<Version>\(.*\)</Version>.*:\1:p' > buildVersion
-        ls
     useTTY: true
     condition: ALL_PREVIOUS_STEPS_WERE_SUCCESSFUL
   - !SetBuildVersionStep
