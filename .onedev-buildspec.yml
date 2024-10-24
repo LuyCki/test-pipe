@@ -42,8 +42,8 @@ stepTemplates:
     image: debian
     interpreter: !DefaultInterpreter
       commands: |
+        build = grep -Eoi "<version>([[:digit:]\.]+)</version>" ./testci.csproj | sed -n 's:.*<Version>\(.*\)</Version>.*:\1:p' > buildVersion
         ls
-        grep -Eoi "<version>([[:digit:]\.]+)</version>" ./testci.csproj | sed -n 's:.*<Version>\(.*\)</Version>.*:\1:p'
     useTTY: true
     condition: ALL_PREVIOUS_STEPS_WERE_SUCCESSFUL
   - !SetBuildVersionStep
