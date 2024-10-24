@@ -12,19 +12,19 @@ jobs:
     name: Set Build Version
     templateName: Set Build Version
     condition: ALL_PREVIOUS_STEPS_WERE_SUCCESSFUL
-  - !PruneBuilderCacheStep
-    name: Prune Builder Cache
-    condition: ALL_PREVIOUS_STEPS_WERE_SUCCESSFUL
   - !BuildImageStep
     name: Build & Push
     output: !RegistryOutput
-      tags: '@server_host@/@project_name@:@file:buildVersion@'
+      tags: '@server_host@/@project_name@:@file:buildVersion@:@build_version@'
     builtInRegistryAccessTokenSecret: package-token
     condition: ALL_PREVIOUS_STEPS_WERE_SUCCESSFUL
   - !CreateTagStep
     name: Create tag
     tagName: v@build_version@
     accessTokenSecret: package-token
+    condition: ALL_PREVIOUS_STEPS_WERE_SUCCESSFUL
+  - !PruneBuilderCacheStep
+    name: Prune Builder Cache
     condition: ALL_PREVIOUS_STEPS_WERE_SUCCESSFUL
   triggers:
   - !TagCreateTrigger
