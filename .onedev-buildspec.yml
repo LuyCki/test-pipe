@@ -11,6 +11,10 @@ jobs:
   - !PruneBuilderCacheStep
     name: Prune Builder Cache
     condition: ALL_PREVIOUS_STEPS_WERE_SUCCESSFUL
+  - !UseTemplateStep
+    name: Set Build Version
+    templateName: Set Build Version
+    condition: ALL_PREVIOUS_STEPS_WERE_SUCCESSFUL
   - !BuildImageStep
     name: Build & Push
     output: !RegistryOutput
@@ -29,3 +33,23 @@ jobs:
   maxRetries: 3
   retryDelay: 30
   timeout: 14400
+stepTemplates:
+- name: Set Build Version
+  steps:
+  - !CommandStep
+    name: Detect Build Version
+    runInContainer: true
+    image: '@property:buildEnvironment@'
+    interpreter: !PowerShellInterpreter
+      powershell: powershell.exe
+      commands: |
+        $ErrorActionPreference = "Stop"
+        $xml = [Xml] (Get-Content ./testci.csproj)
+        $version = $xml.Project.PropertyGroup.Version
+        echo $version
+    useTTY: true
+    condition: ALL_PREVIOUS_STEPS_WERE_SUCCESSFUL
+  - !SetBuildVersionStep
+    name: Set Build Version
+    buildVersion: '@file:buildVersion@'
+    condition: ALL_PREVIOUS_STEPS_WERE_SUCCESSFUL
