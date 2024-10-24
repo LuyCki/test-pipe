@@ -39,7 +39,7 @@ stepTemplates:
   - !CommandStep
     name: Detect Build Version
     runInContainer: true
-    image: '@property:buildEnvironment@'
+    image: '@@property:buildEnvironment@@'
     interpreter: !PowerShellInterpreter
       powershell: powershell.exe
       commands: |
