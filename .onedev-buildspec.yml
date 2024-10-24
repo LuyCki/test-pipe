@@ -8,12 +8,45 @@ jobs:
     withLfs: false
     withSubmodules: false
     condition: ALL_PREVIOUS_STEPS_WERE_SUCCESSFUL
+  - !UseTemplateStep
+    name: Set Build Version
+    templateName: Set Build Version
+    condition: ALL_PREVIOUS_STEPS_WERE_SUCCESSFUL
+  - !PruneBuilderCacheStep
+    name: Prune Builder Cache
+    condition: ALL_PREVIOUS_STEPS_WERE_SUCCESSFUL
   - !BuildImageStep
     name: Build & Push
     output: !RegistryOutput
-      tags: test/testapp:latest
+      tags: '@server_host@/@project_name@:@build_version@'
+    builtInRegistryAccessTokenSecret: package-token
     condition: ALL_PREVIOUS_STEPS_WERE_SUCCESSFUL
+  - !CreateTagStep
+    name: Create tag
+    tagName: v@build_version@
+    accessTokenSecret: package-token
+    condition: ALL_PREVIOUS_STEPS_WERE_SUCCESSFUL
+  triggers:
+  - !TagCreateTrigger
+    branches: main
   retryCondition: never
   maxRetries: 3
   retryDelay: 30
   timeout: 14400
+stepTemplates:
+- name: Set Build Version
+  steps:
+  - !CommandStep
+    name: Detect Build Version
+    runInContainer: true
+    image: debian
+    interpreter: !DefaultInterpreter
+      commands: |
+        ls
+        echo grep '<Version>' < .csproj | sed 's/.*<Version>\(.*\)<\/Version>/\1/'
+    useTTY: true
+    condition: ALL_PREVIOUS_STEPS_WERE_SUCCESSFUL
+  - !SetBuildVersionStep
+    name: Set Build Version
+    buildVersion: '@file:buildVersion@'
+    condition: ALL_PREVIOUS_STEPS_WERE_SUCCESSFUL
