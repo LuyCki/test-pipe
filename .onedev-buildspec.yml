@@ -17,6 +17,9 @@ jobs:
       tags: '@server_host@/@project_name@/@tag@'
     builtInRegistryAccessTokenSecret: package-token
     condition: ALL_PREVIOUS_STEPS_WERE_SUCCESSFUL
+  triggers:
+  - !TagCreateTrigger
+    branches: main
   retryCondition: never
   maxRetries: 3
   retryDelay: 30
