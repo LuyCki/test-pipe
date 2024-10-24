@@ -38,10 +38,9 @@ stepTemplates:
   steps:
   - !CommandStep
     name: Detect Build Version
-    runInContainer: false
-    image: mcr.microsoft.com/powershell
-    interpreter: !ShellInterpreter
-      shell: bash
+    runInContainer: true
+    image: debian
+    interpreter: !DefaultInterpreter
       commands: |
         grep '<Version>' < testci.csproj | sed 's/.*<Version>\(.*\)<\/Version>/\1/'
     useTTY: true
