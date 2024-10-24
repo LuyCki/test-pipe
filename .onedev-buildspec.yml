@@ -15,7 +15,7 @@ jobs:
   - !BuildImageStep
     name: Build & Push
     output: !RegistryOutput
-      tags: '@server_host@/@project_name@:@file:buildVersion@:@build_version@'
+      tags: '@server_host@/@project_name@:@build_version@'
     builtInRegistryAccessTokenSecret: package-token
     condition: ALL_PREVIOUS_STEPS_WERE_SUCCESSFUL
   - !CreateTagStep
